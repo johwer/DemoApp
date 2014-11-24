@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="eventsApp">
+<head>
+    <title>Cach Sample</title>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/app.css">
+</head>
+<body>
+    <div class="container">
+        <div ng-controller="LocaleController" style="padding: 20px;">
+           <h3>{{myDate | date: myFormat}}</h3>
+            
+        </div>
+    </div>
+
+<script src="/lib/jquery.min.js"></script>
+<script src="/lib/angular/angular.js"></script>
+<script src="/lib/angular/i18n/angular-locale_sv-se.js"></script>
+
+
+<script src="/lib/angular/angular-resource.js"></script>
+<script src="/js/app.js"></script>
+<script src="/js/controllers/LocaleController.js"></script>
+<script src="/lib/bootstrap.min.js"></script>
+<script src="/lib/angular/angular-sanitize.js"></script>
+
+</body>
+</html>
