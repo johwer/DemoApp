@@ -1,10 +1,18 @@
 'use strict';
 
-eventsApp.controller('TimeoutController',  function TimeoutController($scope, $locale) {
-    //Date.now use pollyfill if old browser
-    $scope.myDate =  Date.now();
-    $scope.myFormat = $locale.DATETIME_FORMATS.fullDate;
-    //$scope.myFormat = $locale.DATETIME_FORMATS.shortDate;
+eventsApp.controller('TimeoutController',  function TimeoutController($scope, $timeout) {
+    
+    //Use $timeout instead of setTimeout to bind the event otherwise it will 
+    //revalue the rebind the result when the next event will occur
+
+    var promise = $timeout(function(){
+        $scope.name = "Johan Wergelius";
+    }, 3000);
+
+
+    $scope.cancel = function() {
+        $timeout.cancel(promise);
+    };
 
 
 });
