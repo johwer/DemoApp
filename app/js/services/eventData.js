@@ -2,13 +2,11 @@
 
 eventsApp.factory('eventData', function($resource) {
     var resource = $resource('/data/event/:id', {id: '@id'});
-   // var d = new Date();
-   // var dateInMs = d.getMilliseconds();
-    
+   
     return {
         //Using $resource
-        getEvent: function() {
-            return resource.get({id:1});        
+        getEvent: function(eventId) {
+            return resource.get({id:eventId});        
         },
 
         //Using $http and $q and $log 
@@ -26,9 +24,18 @@ eventsApp.factory('eventData', function($resource) {
         // }
 
         saveEvent: function(event) {
-            event.id = 999;
-            
+            console.log(event.id);
+            if(!event.id){
+                event.id = 999+1;
+            } else{
+                event.id = event.id+1;  
+            }
+           
+            console.log(resource.length);
             return resource.save(event);
+        },
+        getAllEvents: function(){
+            return resource.query();
         }    
     };
 });
